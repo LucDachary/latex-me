@@ -1,0 +1,54 @@
+% TODO add brief examples of options (e.g.: landscape, margin, font size).
+% \documentclass[a4paper, landscape, 11pt, margin=1cm, twocolumn]{article}
+\documentclass[a4paper]{article}
+\usepackage[utf8]{inputenc} % permet d'utiliser UTF-8 plutôt que l'ASCII pur (donc les accents clavier)
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc} % polices de caractères "extended computer modern" (EC)
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{fancyvrb}
+\fvset{ % Configuration for all Verbatim environments.
+    commandchars=\\\{\}, % See documentation http://texdoc.net/texmf-dist/doc/latex/fancyvrb/fancyvrb.pdf#page=14
+    fontsize=\normalsize,
+    commentchar=\%, % Allows to gobble end-of-line character if the line ends with "%"
+    framesep=6pt, % remove space between frame and text (like padding)
+    frame=single,
+}
+\usepackage{etoolbox}
+\usepackage{geometry}
+\geometry{
+    landscape,
+    top=10mm,
+    left=10mm,
+    right=10mm,
+    bottom=10mm,
+}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}  % To include pictures.
+\graphicspath{{doc/}}  % LDA not working, I'm prefixing pictures with "doc/".
+\pagestyle{empty} % no page numbers
+
+\usepackage{csquotes}
+
+% twocolumn advanced settings.
+\setlength{\columnseprule}{0.5pt}
+\setlength{\columnsep}{20mm}
+% See https://tex.stackexchange.com/a/548156
+
+\usepackage{fontspec}
+\setmonofont{JetBrains Mono}[
+    Contextuals = Alternate,
+    % Ligatures = TeX,
+    % Scale=0.8,
+]
+
+\title{TODO}
+\author{TODO}
+
+\begin{document}
+
+\maketitle
+
+% Here we go…
+
+\end{document}
