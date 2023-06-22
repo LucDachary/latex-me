@@ -8,6 +8,12 @@ TODO:
 * add `beamer` class support;
 * add an option to build and have a building directory;
 
+# Installation
+Clone this repository; create a symlink to your local binary folder and that's it!
+```shell
+gh repo clone LucDachary/latex-me
+ln -s `pwd`/latex-me/latexme.tcl ~/.local/bin/latexme
+```
 # Usage
 ```shell
 $ latexme article myarticle.tex

@@ -8,16 +8,23 @@ if { $argc != 2 } {
 	exit 1
 }
 
-# TODO make sure the FILENAME does not contain a path. Or then move to this location?
-# TODO if the filename does not end in ".tex", add the suffix.
+# TODO if the filename does not end in ".tex", add the suffix?
+set output_filepath [lindex $argv 1]
+# TODO abort in case the output_filetpath already exists.
+cd [file dirname $output_filepath]
 
-# TODO add "letter" with "scrlttr2
-if { [lindex $argv 0] != "article" } {
+# TODO add support for "report", "beamer", "scrlttr2".
+set document_class [lindex $argv 0]
+if { $document_class != "article" } {
 	puts {error: for now only the class "article" is supported.}
 	exit 1
 }
 
-# TODO prepend the path to the latex-me installation directory.
-set template_article "templates/article.tex"
+# Getting this script's location to locate templates.
+# Resolve symlinks. Trick's source: https://wiki.tcl-lang.org/page/file+normalize.
+set executable_filepath [file dirname [file normalize $argv0/tricky-part]]
+set executable_dirpath [file dirname $executable_filepath]
 
-exec cp $template_article [lindex $argv 1]
+set templates_dirpath [file join $executable_dirpath "templates"]
+exec cp [file join $templates_dirpath "article.tex"] $output_filepath
+puts "Latex \"$document_class\" document has been created at \"$output_filepath\"."
