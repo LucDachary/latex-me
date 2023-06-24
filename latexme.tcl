@@ -10,7 +10,10 @@ if { $argc != 2 } {
 
 # TODO if the filename does not end in ".tex", add the suffix?
 set output_filepath [lindex $argv 1]
-# TODO abort in case the output_filetpath already exists.
+if [file exists $output_filepath] {
+	puts "This exists already; doing nothing."
+	exit 1
+}
 cd [file dirname $output_filepath]
 
 # TODO add support for "report", "beamer", "scrlttr2".
