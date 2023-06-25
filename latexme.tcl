@@ -31,3 +31,14 @@ set executable_dirpath [file dirname $executable_filepath]
 set templates_dirpath [file join $executable_dirpath "templates"]
 exec cp [file join $templates_dirpath "article.tex"] $output_filepath
 puts "Latex \"$document_class\" document has been created at \"$output_filepath\"."
+
+# TODO add a commandline option to execute this part.
+puts "Building…"
+set build_dirname "build"
+if {[file exists $build_dirname] && ![file isdirectory $build_dirname]} {
+	puts "\"$build_dirname\" must be a directory and is not; doing nothing."
+	exit 1
+}
+file mkdir $build_dirname
+
+spawn xelatex --output-directory build $output_filepath
