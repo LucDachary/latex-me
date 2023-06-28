@@ -20,7 +20,10 @@ $ latexme article myarticle.tex
 ```
 
 # Requirements
-Tcl/Expect is required. On Archlinux simply install `expect`:
+Tcl/Expect is required, as well as the `cmdline` Tcl package. On Archlinux you can that the latter
+on AUR.
 ```shell
+# Archlinux instructions
 sudo pacman -S expect
+paru -S tcllib
 ```

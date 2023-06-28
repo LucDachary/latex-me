@@ -1,4 +1,7 @@
 #!/usr/bin/env expect
+package require Tcl 8.5
+package require cmdline 1.5.2
+
 if { $argc != 2 } {
 	puts "error: I need exactly two arguments\n"
 	puts "USAGE:"
