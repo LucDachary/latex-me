@@ -41,4 +41,12 @@ if {[file exists $build_dirname] && ![file isdirectory $build_dirname]} {
 }
 file mkdir $build_dirname
 
+set CTRL_D \004
+
 spawn xelatex --output-directory build $output_filepath
+expect {
+	# TODO exit with error code?
+	{Please type another input file name} {send $CTRL_D}
+	{Package fontspec Error} {send $CTRL_D}
+	default {puts "Document is built!"}
+}
