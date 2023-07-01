@@ -1,0 +1,39 @@
+\documentclass[NF]{scrlttr2}
+% \documentclass[NF, 17pt]{scrlttr2}
+% \documentclass[a5paper, 14pt]{extarticle}
+% \documentclass[NF,firstfoot=false,enlargefirstpage]{scrlttr2}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[french]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{numprint}  % pour \numprint{22950}
+\usepackage[gen]{eurosym}  % pour \euro{}
+\usepackage{phonenumbers} % pour \phonenumber[country=FR]{06xxxxxxxx}
+
+\begin{document}
+
+\setkomavar{fromname}{TODO}
+\setkomavar{fromaddress}{TODO}
+\setkomavar{signature}{TODO}
+\setkomavar{date}{TODO}
+
+\setkomavar{subject}{TODO}
+
+\KOMAoptions{
+    foldmarks=vpmBT,
+    backaddress=false,
+}
+
+\begin{letter}{
+  TODO destinataire}
+
+\opening{Madame TODO,}
+
+TODO contenu
+
+
+\closing{TODO}
+
+\end{letter}
+\end{document}

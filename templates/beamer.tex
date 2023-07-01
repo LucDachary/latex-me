@@ -1,0 +1,56 @@
+\documentclass[compress]{beamer}
+
+\usepackage[french]{babel}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{fancybox}
+\usepackage{hyperref}
+
+\definecolor{comment}{RGB}{0, 129, 0}
+\definecolor{motclef}{RGB}{0, 0, 255}
+
+\usetheme[]{Boadilla}
+\useoutertheme[subsection=false]{miniframes}
+
+% TODO set your colors
+\definecolor{SGris}{RGB}{197, 197, 197}
+\definecolor{SGreen}{RGB}{173, 201, 10}
+\definecolor{NIntermediate}{RGB}{144, 130, 60} %special color between orange/blue and blue/green
+
+%Set the presentation main color
+\setbeamercolor{structure}{fg=NIntermediate}
+
+%Override the three-part-footer's and the two-part-header's colors
+\setbeamercolor{palette primary}{fg=black, bg=white}
+\setbeamercolor{palette secondary}{fg=black, bg=SGris}
+\setbeamercolor{palette tertiary}{fg=black, bg=SGreen}
+\setbeamercolor{structure}{fg=black, bg=white}
+
+\titlegraphic{
+	% TODO add logo.png
+	% \includegraphics[width=2cm]{images/logo}
+}
+
+\begin{document}
+ 
+\title{TODO}
+\subtitle{TODO}
+\author{TODO}
+\maketitle
+ 
+\begin{frame}
+	\tableofcontents
+\end{frame}
+
+\section{TODO}
+\subsection{TODO}
+\begin{frame}[allowframebreaks]{TODO}{TODO}
+	% TODO
+	% \framebreak
+\end{frame}
+
+\end{document}
