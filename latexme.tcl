@@ -2,6 +2,7 @@
 package require Tcl 8.5
 package require cmdline 1.5.2
 
+# TODO add an option to override the destination file.
 set options {
 	{class.arg "article" "the Latex document's class"}
 	{build "build the document after its creation"}
@@ -30,16 +31,23 @@ try {
 # TODO if the filename does not end in ".tex", add the suffix?
 set output_filepath [lindex $argv 0]
 if [file exists $output_filepath] {
-	puts "This exists already; doing nothing."
+	puts "This file exists already; doing nothing."
 	exit 1
 }
 cd [file dirname $output_filepath]
 
-# TODO add support for "report", "beamer", "scrlttr2".
 set document_class $params(class)
-if { $document_class != "article" } {
-	puts {error: for now only the class "article" is supported.}
-	exit 1
+switch $params(class) {
+	article { set document_class "article" }
+	report { set document_class "report" }
+	scrlttr2 -
+	letter { set document_class "scrlttr2" }
+	beamer -
+	presentation { set document_class "beamer" }
+	default {
+		puts "Unknown class \"$params(class)\". Aborting."
+		exit 1
+	}
 }
 
 # Getting this script's location to locate templates.
@@ -48,7 +56,12 @@ set executable_filepath [file dirname [file normalize $argv0/tricky-part]]
 set executable_dirpath [file dirname $executable_filepath]
 
 set templates_dirpath [file join $executable_dirpath "templates"]
-exec cp [file join $templates_dirpath "article.tex"] $output_filepath
+set template_filepath [file join $templates_dirpath [string cat $document_class ".tex"]]
+if { ![file exists $template_filepath] } {
+	puts "Cannot find the template for the class \"$document_class\". Aborting."
+	exit 1
+}
+exec cp $template_filepath $output_filepath
 puts "Latex \"$document_class\" document has been created at \"$output_filepath\"."
 
 # TODO add a commandline option to execute this part.

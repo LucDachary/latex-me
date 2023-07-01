@@ -1,0 +1,88 @@
+\documentclass[a4paper, 12pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{numprint}  % pour \numprint{22950}
+\usepackage{graphicx}  % To include pictures.
+\usepackage{tabularx}
+% https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX#Accessing_additional_named_colours
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+\include{json-lang}
+\usepackage{csquotes}
+\usepackage{float}
+
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{dreem}{RGB}{255, 0, 100}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{OliveGreen},
+    % keywordstyle=\color{magenta},
+    % numberstyle=\tiny\color{codegray},
+    stringstyle=\color{Mahogany},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=12pt,                  
+    numberstyle=\small,
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+	frame=shadowbox,
+}
+
+\lstset{style=mystyle}
+
+% -1 part
+% 0 chapter     
+% 1 section       
+% 2 subsection  
+% 3 subsubsection
+% 4 paragraph
+% 5 subparagraph
+% \setcounter{tocdepth}{3}
+% \setcounter{secnumdepth}{3}
+
+% https://www.overleaf.com/learn/latex/Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=BlueViolet,
+	filecolor=magenta,
+	urlcolor=cyan,
+	pdftitle={T\&V Manual},
+	pdfpagemode=FullScreen,
+	breaklinks=true,
+}
+
+\usepackage{fontspec}
+\setmonofont{JetBrainsMono Nerd Font}[
+Contextuals = Alternate,
+% Ligatures = TeX,
+% Scale=0.8,
+]
+
+% Default \underline encloses its argument in a horizontal box, which does not allow linebreaks.
+% Overriding \underline with \ul from package "soul".
+\usepackage{soul} 
+\renewcommand{\underline}[1]{\ul{#1}}
+
+\title{TODO}
+\author{TODO}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+% Here we go…
+TODO
+
+\end{document}

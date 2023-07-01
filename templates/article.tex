@@ -1,7 +1,8 @@
 % TODO add brief examples of options (e.g.: landscape, margin, font size).
 % \documentclass[a4paper, landscape, 11pt, margin=1cm, twocolumn]{article}
 \documentclass[a4paper]{article}
-\usepackage[utf8]{inputenc} % permet d'utiliser UTF-8 plutôt que l'ASCII pur (donc les accents clavier)
+% Useless with xelatex
+% \usepackage[utf8]{inputenc} % permet d'utiliser UTF-8 plutôt que l'ASCII pur (donc les accents clavier)
 \usepackage[english]{babel}
 \usepackage[T1]{fontenc} % polices de caractères "extended computer modern" (EC)
 \usepackage{multicol}
@@ -15,14 +16,15 @@
     frame=single,
 }
 \usepackage{etoolbox}
-\usepackage{geometry}
-\geometry{
-    landscape,
-    top=10mm,
-    left=10mm,
-    right=10mm,
-    bottom=10mm,
-}
+%\usepackage{geometry}
+%\geometry{
+%	% or "portrait"
+%    landscape,
+%    top=10mm,
+%    left=10mm,
+%    right=10mm,
+%    bottom=10mm,
+%}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{graphicx}  % To include pictures.
 \graphicspath{{doc/}}  % LDA not working, I'm prefixing pictures with "doc/".
@@ -36,7 +38,7 @@
 % See https://tex.stackexchange.com/a/548156
 
 \usepackage{fontspec}
-\setmonofont{JetBrains Mono}[
+\setmonofont{JetBrainsMono Nerd Font}[
     Contextuals = Alternate,
     % Ligatures = TeX,
     % Scale=0.8,
@@ -50,5 +52,6 @@
 \maketitle
 
 % Here we go…
+TODO
 
 \end{document}
