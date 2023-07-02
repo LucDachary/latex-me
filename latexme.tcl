@@ -64,7 +64,6 @@ if { ![file exists $template_filepath] } {
 exec cp $template_filepath $output_filepath
 puts "Latex \"$document_class\" document has been created at \"$output_filepath\"."
 
-# TODO add a commandline option to execute this part.
 if { $params(build) } {
 	puts "Building…"
 	set build_dirname "build"
@@ -79,6 +78,7 @@ if { $params(build) } {
 	spawn xelatex --output-directory build $output_filepath
 	expect {
 		# TODO exit with error code?
+		# TODO improve xelatex's errors handling.
 		{Please type another input file name} {send $CTRL_D}
 		{Package fontspec Error} {send $CTRL_D}
 		default {puts "Document is built!"}
