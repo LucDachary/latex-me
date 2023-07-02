@@ -2,10 +2,10 @@
 package require Tcl 8.5
 package require cmdline 1.5.2
 
-# TODO add an option to override the destination file.
 set options {
 	{class.arg "article" "the Latex document's class"}
 	{build "build the document after its creation"}
+	{ow "Overwrite the destination file if it exists already."}
 }
 set usage ": latexme \[options] filename\noptions:"
 
@@ -30,7 +30,7 @@ try {
 
 # TODO if the filename does not end in ".tex", add the suffix?
 set output_filepath [lindex $argv 0]
-if [file exists $output_filepath] {
+if {!$params(ow) && [file exists $output_filepath]}  {
 	puts "This file exists already; doing nothing."
 	exit 1
 }

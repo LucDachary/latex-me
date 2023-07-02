@@ -31,7 +31,13 @@ ln -s `pwd`/latex-me/latexme.tcl ~/.local/bin/latexme
 # Usage examples
 ```shell
 latexme myarticle.tex
+
+# Run xelatex afterwards
 latexme -build myarticle.tex
+
+# Overwrite myarticle.tex
+latexme -build -ow myarticle.tex
+
 latexme -class report myreport.tex
 latexme -build -class letter myletter.tex
 ```
