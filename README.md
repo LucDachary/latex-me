@@ -21,6 +21,9 @@ sudo pacman -S expect
 paru -S tcllib
 ```
 
+In the actual state, the templates require the font `"JetBrainsMono Nerd Font"`, which can be
+found in the package `extra/ttf-jetbrains-mono-nerd` on Archlinux.
+
 # Installation
 Clone this repository; create a symlink to your local binary folder and that's it!
 ```shell
