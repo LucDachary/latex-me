@@ -4,8 +4,9 @@ package require cmdline 1.5.2
 
 set options {
 	{class.arg "article" "the Latex document's class"}
-	{build "build the document after its creation"}
+	{build "Build the document after its creation."}
 	{ow "Overwrite the destination file if it exists already."}
+	{vim "Open the document in Vim, with building autocmd. This implies -build."}
 }
 set usage ": latexme \[options] filename\noptions:"
 
@@ -64,7 +65,7 @@ if { ![file exists $template_filepath] } {
 exec cp $template_filepath $output_filepath
 puts "Latex \"$document_class\" document has been created at \"$output_filepath\"."
 
-if { $params(build) } {
+if { $params(build) || $params(vim) } {
 	puts "Building…"
 	set build_dirname "build"
 	if {[file exists $build_dirname] && ![file isdirectory $build_dirname]} {
@@ -75,7 +76,7 @@ if { $params(build) } {
 
 	set CTRL_D \004
 
-	spawn xelatex --output-directory build $output_filepath
+	spawn xelatex --output-directory $build_dirname $output_filepath
 	expect {
 		# TODO exit with error code?
 		# TODO improve xelatex's errors handling.
@@ -83,4 +84,11 @@ if { $params(build) } {
 		{Package fontspec Error} {send $CTRL_D}
 		default {puts "Document is built!"}
 	}
+}
+
+# TODO add option to open Vim at the end, with autocmd to build the document
+if { $params(vim) } {
+	puts "Giving control to Vim…"
+	# TODO use $build_dirname instead of hardcoded "build"
+	overlay vim "+autocmd BufWritePost <buffer> !xelatex --output-directory $build_dirname \"<afile>\"" $output_filepath
 }
