@@ -86,9 +86,7 @@ if { $params(build) || $params(vim) } {
 	}
 }
 
-# TODO add option to open Vim at the end, with autocmd to build the document
 if { $params(vim) } {
 	puts "Giving control to Vim…"
-	# TODO use $build_dirname instead of hardcoded "build"
 	overlay vim "+autocmd BufWritePost <buffer> !xelatex --output-directory $build_dirname \"<afile>\"" $output_filepath
 }
