@@ -1,4 +1,4 @@
-\documentclass[a4paper, 11pt, margin=1cm, twocolumn]{article}
+\documentclass[a4paper, 11pt, twocolumn]{article}
 % https://www.overleaf.com/learn/latex/Headers_and_footers
 % article default style is "plain", meaning no headers. Overriding.
 \usepackage{fancyhdr}
@@ -18,15 +18,15 @@
     frame=single,
 }
 \usepackage{etoolbox}
-%\usepackage{geometry}
-%\geometry{
-%	% or "portrait"
-%    landscape,
-%    top=10mm,
-%    left=10mm,
-%    right=10mm,
-%    bottom=10mm,
-%}
+\usepackage{geometry}
+\geometry{
+	% or "landscape"
+    portrait,
+    top=20mm,
+    left=10mm,
+    right=10mm,
+    bottom=10mm,
+}
 \usepackage[dvipsnames]{xcolor}
 \usepackage{graphicx}  % To include pictures.
 \graphicspath{{doc/}}  % LDA not working, I'm prefixing pictures with "doc/".
@@ -41,22 +41,24 @@
 
 \usepackage{fontspec}
 \setmonofont{JetBrainsMonoNL NF}[
-    Contextuals = Alternate,
+    %Contextuals = Alternate,
     % Ligatures = TeX,
     % Scale=0.8,
 ]
 
-\title{TODO}
-\author{TODO}
+\title{TODO Title}
+\author{TODO Author}
 
 \begin{document}
 \makeatletter % to call before invoking \@title or \@author
 
 % https://www.overleaf.com/learn/latex/Headers_and_footers
 \pagestyle{fancy}
+\setlength{\headheight}{13.59999pt}
 \fancyhead{} % clear all header fields
-\fancyhead[H]{\@title}
-\fancyhead[F]{\@author}
+\fancyhead[HL]{\@author}
+\fancyhead[HC]{\textbf \@title}
+\fancyhead[HR]{\@date}
 
 % Here we go…
 TODO

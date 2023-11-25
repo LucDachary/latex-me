@@ -11,6 +11,7 @@ Below are the supported templates.
 | `report` | `report` | `templates/report.tex` |
 | `letter`, `scrlttr2`  | `scrlttr2` | `templates/scrlttr2.tex` |
 | `presentation`, `beamer` | `beamer` | `templates/beamer.tex` |
+| `notes` | `article` | `templates/notes.tex` |
 
 # Requirements
 Tcl/Expect is required, as well as the `cmdline` Tcl package. On Archlinux you can that the latter
