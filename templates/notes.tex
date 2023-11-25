@@ -1,0 +1,74 @@
+\documentclass[a4paper, 11pt, twocolumn]{article}
+% https://www.overleaf.com/learn/latex/Headers_and_footers
+% article default style is "plain", meaning no headers. Overriding.
+\usepackage{fancyhdr}
+
+% Useless with xelatex
+% \usepackage[utf8]{inputenc} % permet d'utiliser UTF-8 plutôt que l'ASCII pur (donc les accents clavier)
+\usepackage[english]{babel}
+\usepackage[T1]{fontenc} % polices de caractères "extended computer modern" (EC)
+\usepackage{multicol}
+\usepackage{float}
+\usepackage{fancyvrb}
+\fvset{ % Configuration for all Verbatim environments.
+    commandchars=\\\{\}, % See documentation http://texdoc.net/texmf-dist/doc/latex/fancyvrb/fancyvrb.pdf#page=14
+    fontsize=\normalsize,
+    commentchar=\%, % Allows to gobble end-of-line character if the line ends with "%"
+    framesep=6pt, % remove space between frame and text (like padding)
+    frame=single,
+}
+\usepackage{etoolbox}
+\usepackage{geometry}
+\geometry{
+	% or "landscape"
+    portrait,
+    top=20mm,
+    left=10mm,
+    right=10mm,
+    bottom=10mm,
+}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}  % To include pictures.
+\graphicspath{{doc/}}  % LDA not working, I'm prefixing pictures with "doc/".
+\pagestyle{empty} % no page numbers
+
+\usepackage{csquotes}
+
+% twocolumn advanced settings.
+\setlength{\columnseprule}{0.5pt}
+\setlength{\columnsep}{20mm}
+% See https://tex.stackexchange.com/a/548156
+
+\usepackage{fontspec}
+\setmonofont{JetBrainsMonoNL NF}[
+    %Contextuals = Alternate,
+    % Ligatures = TeX,
+    % Scale=0.8,
+]
+
+\title{TODO Title}
+\author{TODO Author}
+
+\begin{document}
+\makeatletter % to call before invoking \@title or \@author
+
+% https://www.overleaf.com/learn/latex/Headers_and_footers
+\pagestyle{fancy}
+\setlength{\headheight}{13.59999pt}
+\fancyhead{} % clear all header fields
+\fancyhead[HL]{\@author}
+\fancyhead[HC]{\textbf \@title}
+\fancyhead[HR]{\@date}
+
+% Here we go…
+TODO
+
+\pagebreak
+
+Page 2 content
+
+\pagebreak
+
+Page 3 content
+
+\end{document}

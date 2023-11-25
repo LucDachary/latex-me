@@ -45,6 +45,7 @@ switch $params(class) {
 	letter { set document_class "scrlttr2" }
 	beamer -
 	presentation { set document_class "beamer" }
+	notes { set document_class "notes" }
 	default {
 		puts "Unknown class \"$params(class)\". Aborting."
 		exit 1
@@ -54,12 +55,13 @@ switch $params(class) {
 # Getting this script's location to locate templates.
 # Resolve symlinks. Trick's source: https://wiki.tcl-lang.org/page/file+normalize.
 set executable_filepath [file dirname [file normalize $argv0/tricky-part]]
+#puts "Executable filepath is \"$executable_filepath\" (argv0 = $argv0)."
 set executable_dirpath [file dirname $executable_filepath]
 
 set templates_dirpath [file join $executable_dirpath "templates"]
 set template_filepath [file join $templates_dirpath [string cat $document_class ".tex"]]
 if { ![file exists $template_filepath] } {
-	puts "Cannot find the template for the class \"$document_class\". Aborting."
+	puts "Cannot find the template for the class \"$document_class\" in directory \"$templates_dirpath\". Aborting."
 	exit 1
 }
 exec cp $template_filepath $output_filepath
@@ -86,9 +88,7 @@ if { $params(build) || $params(vim) } {
 	}
 }
 
-# TODO add option to open Vim at the end, with autocmd to build the document
 if { $params(vim) } {
 	puts "Giving control to Vim…"
-	# TODO use $build_dirname instead of hardcoded "build"
 	overlay vim "+autocmd BufWritePost <buffer> !xelatex --output-directory $build_dirname \"<afile>\"" $output_filepath
 }
