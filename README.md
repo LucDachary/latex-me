@@ -21,6 +21,11 @@ sudo pacman -S expect
 paru -S tcllib
 ```
 
+If you don't have installed Latex already, here is the bare minimum:
+```shell
+sudo pacman -S texlive-latex texlive-latexextra texlive-xetex
+```
+
 In the actual state, the templates require the font `"JetBrainsMono Nerd Font"`, which can be
 found in the package `extra/ttf-jetbrains-mono-nerd` on Archlinux.
 
