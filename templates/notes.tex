@@ -6,7 +6,18 @@
 % Useless with xelatex
 % \usepackage[utf8]{inputenc} % permet d'utiliser UTF-8 plutôt que l'ASCII pur (donc les accents clavier)
 \usepackage[english]{babel}
+
 \usepackage[T1]{fontenc} % polices de caractères "extended computer modern" (EC)
+% Set "Latin Modern Sans Serif" as default font.
+\renewcommand{\familydefault}{lmss}
+\usepackage{fontspec}
+% Set JetBrainsMono NF as default monospace font.
+\setmonofont{JetBrainsMono Nerd Font}[
+    %Contextuals = Alternate,
+    % Ligatures = TeX,
+    % Scale=0.8,
+]
+
 \usepackage{multicol}
 \usepackage{float}
 \usepackage{fancyvrb}
@@ -38,13 +49,6 @@
 \setlength{\columnseprule}{0.5pt}
 \setlength{\columnsep}{20mm}
 % See https://tex.stackexchange.com/a/548156
-
-\usepackage{fontspec}
-\setmonofont{JetBrainsMonoNL NF}[
-    %Contextuals = Alternate,
-    % Ligatures = TeX,
-    % Scale=0.8,
-]
 
 \title{TODO Title}
 \author{TODO Author}
