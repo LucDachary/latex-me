@@ -99,6 +99,9 @@
 	% Instructions below override mystyle
 }
 
+\usepackage{newverbs} %  allows the definition of \verb variants
+\renewcommand{\verb}{\collectverb{\color{black}\colorbox{pink}}}
+
 \usepackage{etoolbox}
 \usepackage{geometry}
 \geometry{
@@ -140,7 +143,7 @@ TODO
 
 \pagebreak
 
-Page 2 content
+Page 2 content \verb+TODO+
 
 \pagebreak
 
