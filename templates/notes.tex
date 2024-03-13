@@ -56,6 +56,7 @@
     %Contextuals = Alternate,
     % Ligatures = TeX,
     % Scale=0.8,
+    % Scale=MatchLowercase,
 	% Color=darkgray,
 ]
 \newcommand{\code}[1]{\texttt{\colorbox{lightgray}{#1}}} % new command \code{}
@@ -63,13 +64,41 @@
 \usepackage{multicol}
 \usepackage{float}
 \usepackage{fancyvrb}
+\usepackage{csquotes}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}  % To include pictures.
+
+\usepackage{listings}
 \fvset{ % Configuration for all Verbatim environments.
     commandchars=\\\{\}, % See documentation http://texdoc.net/texmf-dist/doc/latex/fancyvrb/fancyvrb.pdf#page=14
-    fontsize=\normalsize,
     commentchar=\%, % Allows to gobble end-of-line character if the line ends with "%"
-    framesep=6pt, % remove space between frame and text (like padding)
-    frame=single,
 }
+\definecolor{backcolour}{rgb}{0.95,0.95,0.95}
+\lstdefinestyle{mystyle}{
+	backgroundcolor=\color{backcolour},
+	commentstyle=\color{OliveGreen},
+	% keywordstyle=\color{magenta},
+	% numberstyle=\tiny\color{codegray},
+	stringstyle=\color{Mahogany},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,
+	breaklines=true,
+	captionpos=b,
+	keepspaces=true,
+	numbers=left,
+	numbersep=7pt,
+	numberstyle=\footnotesize,
+	showspaces=false,
+	showstringspaces=false,
+	showtabs=false,
+	tabsize=2,
+	frame=shadowbox,
+}
+\lstset{
+	style=mystyle,
+	% Instructions below override mystyle
+}
+
 \usepackage{etoolbox}
 \usepackage{geometry}
 \geometry{
@@ -80,16 +109,16 @@
     right=10mm,
     bottom=15mm,
 }
-\usepackage{graphicx}  % To include pictures.
 \graphicspath{{doc/}}  % LDA not working, I'm prefixing pictures with "doc/".
 \pagestyle{empty} % no page numbers
-
-\usepackage{csquotes}
 
 % twocolumn advanced settings.
 \setlength{\columnseprule}{0.5pt}
 \setlength{\columnsep}{20mm}
 % See https://tex.stackexchange.com/a/548156
+
+% Disable paragraph indentation all in this include. See https://tex.stackexchange.com/a/27807.
+\usepackage{parskip}
 
 \title{TODO Title}
 \author{TODO Author}
@@ -105,8 +134,9 @@
 \fancyhead[HC]{\textbf \@title}
 \fancyhead[HR]{\@date}
 
-% Here we go…
+\begin{lstlisting}[title=TODO]
 TODO
+\end{lstlisting}
 
 \pagebreak
 
