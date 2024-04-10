@@ -46,6 +46,7 @@ switch $params(class) {
 	beamer -
 	presentation { set document_class "beamer" }
 	notes { set document_class "notes" }
+	pentest { set document_class "penetration-test-report" }
 	default {
 		puts "Unknown class \"$params(class)\". Aborting."
 		exit 1

@@ -1,0 +1,175 @@
+\documentclass[a4paper, 12pt]{report}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{numprint}  % pour \numprint{22950}
+\usepackage{graphicx}  % To include pictures.
+\usepackage{tabularx}
+\usepackage{booktabs} % For prettier tables
+% https://www.overleaf.com/learn/latex/Using_colours_in_LaTeX#Accessing_additional_named_colours
+\usepackage[dvipsnames]{xcolor}
+\usepackage{listings}
+\include{json-lang}
+\usepackage{csquotes}
+\usepackage{float}
+
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{dreem}{RGB}{255, 0, 100}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{OliveGreen},
+    % keywordstyle=\color{magenta},
+    % numberstyle=\tiny\color{codegray},
+    stringstyle=\color{Mahogany},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=12pt,                  
+    numberstyle=\small,
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+	frame=shadowbox,
+}
+
+\lstset{style=mystyle}
+
+% -1 part (books and reports)
+% 0 chapter (books and reports)
+% 1 section       
+% 2 subsection  
+% 3 subsubsection
+% 4 paragraph
+% 5 subparagraph
+% \setcounter{tocdepth}{3}
+% \setcounter{secnumdepth}{3}
+
+% https://www.overleaf.com/learn/latex/Hyperlinks
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=BlueViolet,
+	filecolor=magenta,
+	urlcolor=cyan,
+	pdftitle={T\&V Manual},
+	pdfpagemode=FullScreen,
+	breaklinks=true,
+}
+
+\usepackage{fontspec}
+\setmonofont{JetBrainsMono Nerd Font}[
+Contextuals = Alternate,
+% Ligatures = TeX,
+% Scale=0.8,
+]
+
+% Default \underline encloses its argument in a horizontal box, which does not allow linebreaks.
+% Overriding \underline with \ul from package "soul".
+\usepackage{soul} 
+\renewcommand{\underline}[1]{\ul{#1}}
+
+\title{TODO}
+\author{TODO}
+
+\begin{document}
+\maketitle
+
+\tableofcontents
+
+\chapter{Executive Summary}
+\section{Overview}
+(This section is for senior management.)
+
+Outline the scope of the engagement.
+
+Write what was tested and what was dropped.
+
+Include timing issues.
+
+Mention the time frame:
+	* length of time spent on testing;
+	* dates;
+	* (potentially) testing hours.
+
+Refer to the RoEs and reference the referee report if a referee was part of
+the testing team.
+If DOS was allowed or Social Engineering encouraged: mention it here.
+Mention any specific testing methodology.
+
+Include support infrastructure and accounts, plus include any account that we
+created.
+
+Targets were:
+
+\begin{tabular}{ll}
+	\toprule
+	Target Name & Target IP Address \\
+	\midrule
+	 MS01 & 192.168.191.157\\
+	\bottomrule
+\end{tabular}
+
+\section{Hight-Level Results}
+High-level overview of each step of the engagement.
+
+Establish severity, context and worst-case scenario for the key findings from
+the testing.
+
+(No code blocks, no screenshots here.)
+
+Make not of any trend.
+
+Mention what the client did well (e.g.\\: proper hardering).
+
+Conclude with an engagement wrap-up.
+
+\chapter{Complete Report}
+\section{Testing Environment Considerations}
+% Here starts the full report
+
+Detail any issues that affected the testing. Be transparent and professional.
+
+\section{Technical Summary}
+List of all the key findings, this time for a technical audience like
+security architects.
+
+Group issues into common areas.
+
+Terminate with a risk heat map based on vulnerability adjusted as appropriate
+to the client's context. 
+
+\section{Technical Findings and Remediation}
+Technical section. Include the full technical details.
+
+Often presented as a table. Write an attack narrative instead if pertinent.
+
+\begin{tabular}{llp{0.3\textwidth}p{0.3\textwidth}}
+	\toprule
+	Ref. & Risk & Issue Description and Implications & Recommendations \\
+	\midrule
+	1 & H & Privilege management is inadequate,\ldots Some reference \ref{lst:bash-one} & All accounts should have passwords that are enforced by a strict policy.~[\ldots] \\
+	\bottomrule
+\end{tabular}
+
+\chapter{Appendices}
+Things that do not fit anywhere else.
+
+Things that are too lenghty or too detailed to include inline (e.g.\\: long lists of compromised users, large proof-of-concept code blocks).
+
+\label{listing:bash1}
+\begin{lstlisting}[caption=Some long listing.,language=sh, label=lst:bash-one]
+Some
+long
+list
+\end{lstlisting}
+
+End with references, from the most authoritative sources.
+
+\end{document}
