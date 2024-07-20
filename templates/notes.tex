@@ -2,6 +2,46 @@
 % https://www.overleaf.com/learn/latex/Headers_and_footers
 % article default style is "plain", meaning no headers. Overriding.
 \usepackage{fancyhdr}
+\usepackage{booktabs} % Fancy tables: \toprule, \midrule, \bottomrule
+\usepackage{hyperref} % \href
+\hypersetup{
+	colorlinks=true,
+	linkcolor=TealBlue, % ToC and \ref{}
+	urlcolor=Cerulean, % \href{}
+	pdftitle={TODO PDF title},
+	pdfpagemode=FullScreen,
+	breaklinks=true,
+}
+
+\usepackage[dvipsnames]{xcolor}
+
+\definecolor{backcolour}{gray}{0.95}
+\usepackage{listings}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{OliveGreen},
+    % keywordstyle=\color{magenta},
+    % numberstyle=\tiny\color{codegray},
+    stringstyle=\color{Mahogany},
+    basicstyle=\ttfamily,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=12pt,
+    numberstyle=\small,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+	frame=shadowbox,
+	rulesepcolor=\color{gray},
+}
+\usepackage{newverbs} %  for \collectvert
+% Make \verb|...| contents show.
+\renewcommand{\verb}{\collectverb{\color{black}\colorbox{lime}}}
+\lstset{style=mystyle}
 
 % Useless with xelatex
 % \usepackage[utf8]{inputenc} % permet d'utiliser UTF-8 plutôt que l'ASCII pur (donc les accents clavier)
@@ -16,7 +56,9 @@
     %Contextuals = Alternate,
     % Ligatures = TeX,
     % Scale=0.8,
+	% Color=darkgray,
 ]
+\newcommand{\code}[1]{\texttt{\colorbox{lightgray}{#1}}} % new command \code{}
 
 \usepackage{multicol}
 \usepackage{float}
@@ -38,7 +80,6 @@
     right=10mm,
     bottom=15mm,
 }
-\usepackage[dvipsnames]{xcolor}
 \usepackage{graphicx}  % To include pictures.
 \graphicspath{{doc/}}  % LDA not working, I'm prefixing pictures with "doc/".
 \pagestyle{empty} % no page numbers
