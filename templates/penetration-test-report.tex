@@ -14,37 +14,42 @@
 \include{json-lang}
 \usepackage{csquotes}
 \usepackage{float}
+\usepackage{ragged2e} % for "justify" environment
+\usepackage{multirow} % For \multirow{5}{*}{TCP}
 
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
-\definecolor{dreem}{RGB}{255, 0, 100}
-
+\definecolor{backcolour}{gray}{0.95}
+\definecolor{TmuxBar}{RGB}{108, 196, 179}
 \lstdefinestyle{mystyle}{
-    backgroundcolor=\color{backcolour},   
+    backgroundcolor=\color{backcolour},
     commentstyle=\color{OliveGreen},
     % keywordstyle=\color{magenta},
     % numberstyle=\tiny\color{codegray},
     stringstyle=\color{Mahogany},
     basicstyle=\ttfamily,
-    breakatwhitespace=false,         
-    breaklines=true,                 
-    captionpos=b,                    
-    keepspaces=true,                 
-    numbers=left,                    
-    numbersep=12pt,                  
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=12pt,
     numberstyle=\small,
-    showspaces=false,                
+    showspaces=false,
     showstringspaces=false,
-    showtabs=false,                  
+    showtabs=false,
     tabsize=2,
 	frame=shadowbox,
+	rulesepcolor=\color{TmuxBar},
 }
+\usepackage{newverbs} %  for \collectvert
+% Make \verb|...| contents show.
+\renewcommand{\verb}{\collectverb{\color{black}\colorbox{TmuxBar}}}
 
 \lstset{style=mystyle}
 
 % -1 part (books and reports)
 % 0 chapter (books and reports)
-% 1 section       
-% 2 subsection  
+% 1 section
+% 2 subsection
 % 3 subsubsection
 % 4 paragraph
 % 5 subparagraph
@@ -55,25 +60,38 @@
 \usepackage{hyperref}
 \hypersetup{
 	colorlinks=true,
-	linkcolor=BlueViolet,
-	filecolor=magenta,
-	urlcolor=cyan,
-	pdftitle={T\&V Manual},
+	linkcolor=TealBlue, % ToC and \ref{}
+	% filecolor=magenta,
+	urlcolor=Cerulean, % \href{}
+	pdftitle={OSCP Penetration Test Report},
 	pdfpagemode=FullScreen,
 	breaklinks=true,
 }
 
+\renewcommand{\familydefault}{lmss}
 \usepackage{fontspec}
 \setmonofont{JetBrainsMono Nerd Font}[
 Contextuals = Alternate,
 % Ligatures = TeX,
-% Scale=0.8,
+Scale=0.8,
 ]
 
 % Default \underline encloses its argument in a horizontal box, which does not allow linebreaks.
 % Overriding \underline with \ul from package "soul".
-\usepackage{soul} 
+\usepackage{soul}
 \renewcommand{\underline}[1]{\ul{#1}}
+
+% https://stackoverflow.com/a/123184
+\usepackage{calc}
+\newlength{\imgwidth}
+\newcommand\scalegraphics[1]{%
+    \settowidth{\imgwidth}{\includegraphics{#1}}%
+    \setlength{\imgwidth}{\minof{\imgwidth}{\textwidth}}%
+    \includegraphics[width=\imgwidth]{#1}%
+}
+
+% Useful symbols:
+% TM \texttrademark{}
 
 \title{TODO}
 \author{TODO}
@@ -116,7 +134,7 @@ Targets were:
 	\bottomrule
 \end{tabular}
 
-\section{Hight-Level Results}
+\section{High-Level Results}
 High-level overview of each step of the engagement.
 
 Establish severity, context and worst-case scenario for the key findings from
@@ -143,7 +161,7 @@ security architects.
 Group issues into common areas.
 
 Terminate with a risk heat map based on vulnerability adjusted as appropriate
-to the client's context. 
+to the client's context.
 
 \section{Technical Findings and Remediation}
 Technical section. Include the full technical details.
