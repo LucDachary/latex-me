@@ -2,8 +2,8 @@
 #
 # Latex-me Bash version.
 
-# TODO check behavior with a symlink as "$0"
-BASE_DIR=$(dirname "$0")
+# realpath is part of coreutils
+BASE_DIR=$(dirname $(realpath $(which "$0")))
 
 # Getting template names without the file extension.
 CLASSES=($(ls $BASE_DIR/templates/*.tex | xargs -I _ basename _ .tex))
