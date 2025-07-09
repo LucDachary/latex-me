@@ -74,6 +74,12 @@
     commandchars=\\\{\}, % See documentation http://texdoc.net/texmf-dist/doc/latex/fancyvrb/fancyvrb.pdf#page=14
     commentchar=\%, % Allows to gobble end-of-line character if the line ends with "%"
 }
+
+% Compact lists
+% https://stackoverflow.com/questions/4968557/latex-very-compact-itemize
+\usepackage{enumitem}
+\setlist{topsep=0pt, leftmargin=*}
+
 \definecolor{backcolour}{rgb}{0.95,0.95,0.95}
 \lstdefinestyle{mystyle}{
 	backgroundcolor=\color{backcolour},
