@@ -65,6 +65,12 @@ fi >&2
 printf -v TEMPLATE_FILEPATH '%s/templates/%s.tex' "$BASE_DIR" "$CLASS"
 (( $VERBOSE )) && printf 'Using template "%s"\n' "$TEMPLATE_FILEPATH"
 
+[[ "$1" =~ ^~ ]] && {
+	printf "There is a tilde (~) in the path. This is not supported. Doing nothing." >> /dev/stderr
+	exit 1
+}
+
+# TODO improve to expand paths such as "~/Documents/…". Currently the "~" is not expanded.
 cp "$TEMPLATE_FILEPATH" "$1"
 printf 'I created file "%s".\n' "$1"
 
